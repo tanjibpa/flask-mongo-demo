@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">File uploaded by Users</div>
+
+  <!-- Table -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Filename</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for file in files %}
+      <tr>
+        <td>{{ file.username }}</td>
+        <td>{{ file.name }}</td>
+        <td>{{ file.email }}</td>
+        <td><a href="{{ url_for('main.download_file', filename=file.filename) }}">{{ file.filename }}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
